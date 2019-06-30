@@ -17,9 +17,43 @@ Objects类属于java.util包，它是在JDK7中添加的一个工具类，它由
 比较两个对象s1，s2，如果s1为null的时候，则s1.equals(s2),就会触发一个异常，成为空指针异常，这是因为s1是null，无法调用方法等。而Objects类的equals()方法解决了这个问题。称之为null-save。    
 
 # 2.Data类
+类简介  
+属于java.util包，用来表示时间和日期，1970年1月1日作为毫秒的起始日期。该类返回的时间就是先到到起始点经历了多少毫秒。
 1. 毫秒值得概念和作用  
-2. 构造方法和成员方法  
-3. DataFormat类  
+这个其实时间是以英国所在时区为标准的，中国所在时区要增加8个小时
+2. 构造方法和成员方法
+无参构造方法：Date date = new Data();
+直接打印则会显示 当前系统时间。
+
+带参构造方法：Date date = new Date(0L);//x为一个long类型的毫秒值   
+理解为1970年1月1日8时加上参数时间后的时间点
+直接打印这个date则会打印出1970年1月1日8时
+
+成员方法：getTime() 功能：把时间转换为毫秒相当于System.currentTimeMillis()方法
+# DateFormat类
+
+属于java.text包，它是一个抽象类，直接子类SimpleDataformat、MessageFormat、NumberFormat。
+
+其功能：格式化：日期->文本、解析：文本->日期
+成员方法：
+String format(Date date)按照指定模式，把Date日期转格式化为符合模式的字符串
+Date parse(String source)把符合模式的字符串，解析为Date日期
+此方法和format方法刚好相反，format方法是把Date类对象转换为我们指定的日期格式，而这个方法是把我们指定的日期格式转换为Date类对象。
+parse方法声明了一个异常，称之为解析异常，如果字符串和构造方法的模式不匹配，则抛出异常。 
+
+我们在使用时一般使用它的直接子类，SimpleDateFormat,
+SimmpleDateFormat类
+构造方法：SimpleDateFormat(String pattern)
+其中参数pattern使用固定的格式：
+y代表年
+M代表月
+d代表日
+H代表时
+m代表分
+s代表秒
+时间符号y、M...符号本身不能改变，但是连接时间的符号可以改变。
+例如：pattern可以为：“yyyy-MM-dd-HH-mm:ss”
+也可以为："yyyy年MM月dd日HH时mm分ss秒"
 4. 练习_计算一个人已经出生了多少天  
 # 3.Calender类
 1. 类介绍  
