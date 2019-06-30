@@ -4,7 +4,10 @@ Object类属于java.lang包，Object是所有类的超类，也就是java中所�
 ## 2.常用方法
 **1. toString方法**  
 直接打印对象的名字，就是调用对象的toString()方法，打印的是对象在堆内存中的地址值。也就是说默认的toString方法打印的就是对象的地址值。我们可以自己重写toString()方法。Idea 的技巧，通过Alt+INS 可以快捷添加toString()方法。看一个类是否重写了toString()方法，可以通过打印该对象名字来判断，如果打印的是对象地址，则代表没有重写，否则就重写了。例如：Scanner类、ArraryList类都重写了toString()方法。Random类则没有重写。  
-**2. equals方法：public boolean equals (Object obj)**  
+**2. equals方法**  
+```java
+	public boolean equals (Object obj)
+```
 - 默认功能(属于Object类)：比较其他对象是否与此对象相等。      
 - 基本数据类型：比较数据的值。  
 - 引用数据类型：比较对象的地址。没什么意义，所以一般要重写equals() 方法，即比较两个对象的属性。 
@@ -53,7 +56,7 @@ String format(Date date)//按照指定模式，把Date日期转格式化为符�
 Date parse(String source)//把符合模式的字符串，解析为Date日期。此方法和format方法刚好相反，format方法是把Date类对象转换为我们指定的日期格式，而这个方法是把我们指定的日期格式转换为Date类对象。
 /**/
 ```
-__ __(3)注意
+**(3)注意**  
 parse方法声明了一个异常，称之为解析异常，如果字符串和构造方法的模式不匹配，则抛出异常。 
 **(4)使用该类**  
 我们在使用时一般使用它的直接子类，SimpleDateFormat,下述为其构造方法  
@@ -62,7 +65,7 @@ parse方法声明了一个异常，称之为解析异常，如果字符串和构
 ```
 **(5)pattern注意**  
 **参数pattern使用固定的格式：**y代表年,M代表月,d代表日,H代表时,m代表分,s代表秒。时间符号y、M...符号本身不能改变，但是连接时间的符号可以改变。例如：pattern可以为：“yyyy-MM-dd-HH-mm:ss”。也可以为："yyyy年MM月dd日HH时mm分ss秒"   
-# 3.Calender类
+# 5.Calender类
 ## 1.类简介 
 Calender是一个抽象类，在Date类之后出现，替代了许多Date类中的方法，该类的出现时为了更加方便的获取时间信息，这个类中包含了许多静态方法，因此获取时间更加方便。Calender类中的成员变量也是静态的，因此可以使用Calendar.字段，来访问或更改其值。  
 ## 2.字段摘要
@@ -93,7 +96,7 @@ Calendar静态方法
 	public Date getTime()//返回一个表示此Calendar时间值（从历元到现在的毫秒偏移量）的Date对象。
 ```
 **注意：**  指定日历字段的方式为：Calender.字段。例如：Calender.YEAR。  
-# 4.System类
+# 6.System类
 ## 1.类简介
 属于java.lang包，其中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作。  
 ## 2.常用成员方法：
@@ -109,7 +112,7 @@ Calendar静态方法
 	length:要复制数组元素的数量
 	*/
 ```
-# 5.StringBuilder类
+# 7.StringBuilder类
 ## 1. StringBuilder类原理
 String 底层是一个final的Byte数组，由于是final的，所以其长度和内容是不可改变的。例如我们有三个字符串进行拼接"a"+"b"+"c"，那么我们在进行拼接时，实际上在内存中会产生一个中间字符串，即"ab"如果拼接的多了，产生的中间字符串会更多，因此这种拼接效率是非常低下的，并且很消耗内存。为了解决这个问题，java引入了StringBuilder类。我们可以把StringBuilder类理解为字符串缓冲区，它是一个容器，它底层也是一个Byte数组，但是与String不同的是，它的数组并不是final的，因此数组的长度是可以改变的。StringBuilder默认的长度为16个字节，在容量不够时，它会自动扩容。我们在进行字符 串拼接时，相当于在给一个容器中增加一个元素。StringBuilder类属于java.lang包。   
 ## 2. 构造方法
@@ -132,7 +135,7 @@ String 底层是一个final的Byte数组，由于是final的，所以其长度�
 	public String toString()//StringBuilder装换为String 采用Stringbuilder的toString()方法
 ```
 
-# 6.基本类型包装类
+# 8.基本类型包装类
 ## 1.java包装类概述
 java包装类位于java.lang包。Java提供了两个类型系统，基本类型与引用类型，使用基本类型在于效率，然而很多情况，会创建对象使用，因为对象可以做更多的功能，如果想要我们的基本类型像对象一样操作，就可以使用基本类型对应的包装类，定义了包装类，就可以使用包装类中的相关方法。常用包装类(公8个)如下：  
 
