@@ -2,14 +2,14 @@
 ## 1.类简介  
 Object类属于java.lang包，Object是所有类的超类，也就是java中所有的类都继承自Object，如果没有写继承关系的话，则默认继承自Object类。   
 ## 2.常用方法
-** 1. toString方法  **
+** 1. toString方法  **  
 直接打印对象的名字，就是调用对象的toString()方法，打印的是对象在堆内存中的地址值。也就是说默认的toString方法打印的就是对象的地址值。我们可以自己重写toString()方法。Idea 的技巧，通过Alt+INS 可以快捷添加toString()方法。看一个类是否重写了toString()方法，可以通过打印该对象名字来判断，如果打印的是对象地址，则代表没有重写，否则就重写了。例如：Scanner类、ArraryList类都重写了toString()方法。Random类则没有重写。  
-** 2. equals方法：public boolean equals (Object obj) ** 
+** 2. equals方法：public boolean equals (Object obj) **  
 - 默认功能(属于Object类)：比较其他对象是否与此对象相等。      
 - 基本数据类型：比较数据的值。  
 - 引用数据类型：比较对象的地址。没什么意义，所以一般要重写equals() 方法，即比较两个对象的属性。 
 
-** 注意： **  
+** 注意： **   
 
 ** (1) **在修改equals()方法时，需要比较子类的属性，而在创建对象时，是用父类的名字指向了子类的对象，也就是使用了多态的方法，多态是存在弊端的，即不能访文子类有的内容(属性和方法)，此时就需要一个解决方案。我们常用的解决方法就是：向下转型(即强转)。  
 
@@ -52,12 +52,12 @@ String format(Date date)//按照指定模式，把Date日期转格式化为符�
 Date parse(String source)//把符合模式的字符串，解析为Date日期。此方法和format方法刚好相反，format方法是把Date类对象转换为我们指定的日期格式，而这个方法是把我们指定的日期格式转换为Date类对象。
 /**/
 ```
-** (3)注意 **  
+__ __(3)注意 __ __ 
 parse方法声明了一个异常，称之为解析异常，如果字符串和构造方法的模式不匹配，则抛出异常。 
 ** (4)使用该类 **  
 我们在使用时一般使用它的直接子类，SimpleDateFormat,下述为其构造方法  
 ```java
-SimpleDateFormat(String pattern)
+	SimpleDateFormat(String pattern)
 ```
 ** (5)pattern注意 **  
 ** 参数pattern使用固定的格式： **y代表年,M代表月,d代表日,H代表时,m代表分,s代表秒。时间符号y、M...符号本身不能改变，但是连接时间的符号可以改变。例如：pattern可以为：“yyyy-MM-dd-HH-mm:ss”。也可以为："yyyy年MM月dd日HH时mm分ss秒"   
