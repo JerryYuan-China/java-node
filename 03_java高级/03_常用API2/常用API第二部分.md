@@ -2,23 +2,23 @@
 ## 1.类简介  
 Object类属于java.lang包，Object是所有类的超类，也就是java中所有的类都继承自Object，如果没有写继承关系的话，则默认继承自Object类。   
 ## 2.常用方法
-** 1. toString方法  **  
+**1. toString方法**  
 直接打印对象的名字，就是调用对象的toString()方法，打印的是对象在堆内存中的地址值。也就是说默认的toString方法打印的就是对象的地址值。我们可以自己重写toString()方法。Idea 的技巧，通过Alt+INS 可以快捷添加toString()方法。看一个类是否重写了toString()方法，可以通过打印该对象名字来判断，如果打印的是对象地址，则代表没有重写，否则就重写了。例如：Scanner类、ArraryList类都重写了toString()方法。Random类则没有重写。  
-** 2. equals方法：public boolean equals (Object obj) **  
+**2. equals方法：public boolean equals (Object obj)**  
 - 默认功能(属于Object类)：比较其他对象是否与此对象相等。      
 - 基本数据类型：比较数据的值。  
 - 引用数据类型：比较对象的地址。没什么意义，所以一般要重写equals() 方法，即比较两个对象的属性。 
 
 **注意：**   
 
-** (1) **在修改equals()方法时，需要比较子类的属性，而在创建对象时，是用父类的名字指向了子类的对象，也就是使用了多态的方法，多态是存在弊端的，即不能访文子类有的内容(属性和方法)，此时就需要一个解决方案。我们常用的解决方法就是：向下转型(即强转)。  
+**(1)** 在修改equals()方法时，需要比较子类的属性，而在创建对象时，是用父类的名字指向了子类的对象，也就是使用了多态的方法，多态是存在弊端的，即不能访文子类有的内容(属性和方法)，此时就需要一个解决方案。我们常用的解决方法就是：向下转型(即强转)。  
 
-** (2) **在重写equals方法时一般要考虑的情况：比较的对象是否为本身？比较的对象是否能够发生向下转型？比较的对象是否为NULL？。在Idea 中Alt+INS 同样可以快捷重写equals()方法，但是它判断是否可以向下转型时是用的是反射技术。   
+**(2)** 在重写equals方法时一般要考虑的情况：比较的对象是否为本身？比较的对象是否能够发生向下转型？比较的对象是否为NULL？。在Idea 中Alt+INS 同样可以快捷重写equals()方法，但是它判断是否可以向下转型时是用的是反射技术。   
 
 # 2.Objects类
-** 1.equals()方法 **  
+**1.equals()方法**  
 Objects类属于java.util包，它是在JDK7中添加的一个工具类，它由一些静态方法组成。这些方法时空指针安全的(null-save) 或者说空指针容忍的(null-tolerant)。其中的一个方法就是用于比较两个对象时候相等。    
-** 2.什么叫null-save 或者null-tolerant ?  **  
+**2.什么叫null-save 或者null-tolerant ? **  
 比较两个对象s1，s2，如果s1为null的时候，则s1.equals(s2),就会触发一个异常，成为空指针异常，这是因为s1是null，无法调用方法等。而Objects类的equals()方法解决了这个问题。称之为null-save。      
 
 # 3.Data类
@@ -26,15 +26,15 @@ Objects类属于java.util包，它是在JDK7中添加的一个工具类，它由
 属于java.util包，用来表示时间和日期，1970年1月1日作为毫秒的起始日期。该类返回的时间就是先到到起始点经历了多少毫秒。这个其实时间是以英国所在时区为标准的，中国所在时区要增加8个小时。  
 
 ## 2.构造方法
-** (1)无参构造方法： **    
+**(1)无参构造方法：**    
 ```java
 Date date = new Data();//直接打印则会显示 当前系统时间。
 ```
-** (2)带参构造方法： **    
+**(2)带参构造方法：**    
 ```java
 Date date = new Date(0L);//x为一个long类型的毫秒值  
 ``` 
-** (3)注意 **   
+**(3)注意**   
 理解为1970年1月1日8时加上参数时间后的时间点，直接打印这个date则会打印出1970年1月1日8时。  
 ## 3.成员方法
 ```java
@@ -42,10 +42,11 @@ getTime() //功能：把时间转换为毫秒相当于System.currentTimeMillis()
 ```
 # 4.DateFormat类
 ## 1.类简介
-** (1)概述 **
+**(1)概述**
 属于java.text包，它是一个抽象类，直接子类SimpleDataformat、MessageFormat、NumberFormat。  
 
-** (2)其功能： **格式化：日期->文本、解析：文本->日期  
+**(2)其功能：** 
+格式化：日期->文本、解析：文本->日期  
 ## 2.成员方法
 ```java
 String format(Date date)//按照指定模式，把Date日期转格式化为符合模式的字符串
@@ -59,13 +60,13 @@ parse方法声明了一个异常，称之为解析异常，如果字符串和构
 ```java
 	SimpleDateFormat(String pattern)
 ```
-** (5)pattern注意 **  
-** 参数pattern使用固定的格式： **y代表年,M代表月,d代表日,H代表时,m代表分,s代表秒。时间符号y、M...符号本身不能改变，但是连接时间的符号可以改变。例如：pattern可以为：“yyyy-MM-dd-HH-mm:ss”。也可以为："yyyy年MM月dd日HH时mm分ss秒"   
+**(5)pattern注意**  
+**参数pattern使用固定的格式：**y代表年,M代表月,d代表日,H代表时,m代表分,s代表秒。时间符号y、M...符号本身不能改变，但是连接时间的符号可以改变。例如：pattern可以为：“yyyy-MM-dd-HH-mm:ss”。也可以为："yyyy年MM月dd日HH时mm分ss秒"   
 # 3.Calender类
 ## 1.类简介 
 Calender是一个抽象类，在Date类之后出现，替代了许多Date类中的方法，该类的出现时为了更加方便的获取时间信息，这个类中包含了许多静态方法，因此获取时间更加方便。Calender类中的成员变量也是静态的，因此可以使用Calendar.字段，来访问或更改其值。  
 ## 2.字段摘要
- ** Calendar类中提供很多成员常量，代表给定的日历字段： **
+ **Calendar类中提供很多成员常量，代表给定的日历字段：**
  
 | 字段值          | 含义                             |
 | ------------ | --------------------               |
@@ -91,7 +92,7 @@ Calendar静态方法
 	public abstract void add(int field, int amount)//根据日历的规则，为给定的日历字段添加或减去指定的时间量。
 	public Date getTime()//返回一个表示此Calendar时间值（从历元到现在的毫秒偏移量）的Date对象。
 ```
-** 注意： **指定日历字段的方式为：Calender.字段。例如：Calender.YEAR。  
+**注意：**  指定日历字段的方式为：Calender.字段。例如：Calender.YEAR。  
 # 4.System类
 ## 1.类简介
 属于java.lang包，其中提供了大量的静态方法，可以获取与系统相关的信息或系统级操作。  
@@ -120,11 +121,11 @@ String 底层是一个final的Byte数组，由于是final的，所以其长度�
 	StringBuilder(String  str)
 ```
 ## 3. 常用成员方法
-** 1. append方法 **  
+**1. append方法**  
 ```java 
 	public StringBuilder oppend()//功能：向StringBuilder中添加数据，返回调用方法的对象，通常不需要接受对象。
 ```
-** 2. toString方法**
+**2. toString方法**
 ```java
 	//StringBuilder和String对象可以相互转换
 	//String转化成StringBuilder 采用StringBuilder的构造方法即可
@@ -148,9 +149,9 @@ java包装类位于java.lang包。Java提供了两个类型系统，基本类型
 ## 2. 拆箱与装箱
 基本类型与对应的包装类对象之间，来回转换的过程称为”装箱“与”拆箱“：  
 
-* ** 装箱 **：从基本类型转换为对应的包装类对象。  
+* **装箱** ：从基本类型转换为对应的包装类对象。  
 
-* ** 拆箱 **：从包装类对象转换为对应的基本类型。  
+* **拆箱** ：从包装类对象转换为对应的基本类型。  
 
 ```java
 	//基本数值---->包装对象
